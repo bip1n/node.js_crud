@@ -46,7 +46,8 @@ app.get("/addStudent", (req, res) => {
             let qry2 = "INSERT INTO crud VALUES (?,?,?,?)";
             mysql.query(qry2, [name, phone, email, gender], (err, results) => {
                 if (results.affectedRows > 0)
-                    res.render("add", { mesg: true })
+                    res.render("add", { mesg: true }),
+                    console.log("Data inserted successfully");
                 else
                     res.render("add", { mesg: false })
             });
