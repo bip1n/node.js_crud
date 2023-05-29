@@ -37,12 +37,12 @@ app.get("/addStudent", (req, res) => {
    //fetching the data from the form
    const {name,phone,email,gender} = req.query;
 
-   //sanitizing the data
+   //sanitizing the data 
         let qry = "SELECT * FROM crud WHERE email = ? or phone = ?";
         mysql.query(qry, [email,phone], (err, results) => {
         if (err) throw err;
-        else{
-            //insert query
+        else{ 
+            //insert query to insert the data into the database
             let qry2 = "INSERT INTO crud VALUES (?,?,?,?)";
             mysql.query(qry2, [name, phone, email, gender], (err, results) => {
                 if (results.affectedRows > 0)
