@@ -119,11 +119,6 @@ app.get("/updatestudent", (req, res) => {
             }
     });
 });
-
-
-
-
-
 //Create Server
 app.listen(port, (err) => {
     if (err)
