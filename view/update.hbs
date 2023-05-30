@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="">
-      <form action="/updatesearch">
+      <form action="/updatestudent">
    <h3>SEARCH STUDENT</h3>
    
     <hr>
@@ -22,49 +22,58 @@
 
     <br>
    
- {{#if umesg}}
-     <h3>Data updated!</h3>
-     {{/if}}
+    
 
-     
      {{#if mesg2}}
      <h3>Data Not Found!</h3>
      {{/if}}
     </form>
-  </div>
+  </div>   
 
-<!--Search form design end-->
 
-{{#if mesg1}}
-       <div class="container">
-       <form action="/updatestudent"  >
+
+  <!-- Search form design end-->
+  {{#if mesg1}}
+
+
+   <div class="container">
+       <form action="/addstudent"  >
    <h3>UPDATE STUDENT</h3>
    
     <hr>
-{{#data}}
+    {{#data}}
+
+
     <label for="name"><b>Student name</b></label>
-    <input type="text" placeholder="Enter Name" name="name" value="{{username}}" id="name" required>
+    <input type="text" placeholder="Enter Name" name="name" value="{{name}}" id="name" required>
 
     <label for="phn"><b>Phone no</b></label>
-    <input type="phone" placeholder="Enter Phone Number" name="phone" value="{{phoneno}}" id="phone" required readonly>
+    <input type="phone" placeholder="Enter Phone Number" name="phone" value="{{phone}}" id="phone" required readonly>
 
     <label for="eml-id"><b>Email Id</b></label>
-    <input type="email" placeholder="Enter Email Id" name="email" value="{{emailid}}" id="email" required readonly>
+    <input type="email" placeholder="Enter Email Id" name="email" value="{{email}}" id="email" required readonly>
    
   <div class="gender_g">
      <strong>Gender</strong>
      <input type="radio" name="gender" id="" value="Male"> Male
      <input type="radio" name="gender" id=""  value="Female">  Female
   </div>
-    <button type="submit" class="registerbtn">UPDATE STUDENT</button>
+    <button type="submit" class="registerbtn">ADD STUDENT</button>
 {{/data}}
   
     <a href="./" style="color:black">BACK TO HOME PAGE</a> <br>
      
+
+     {{#if umesg}}
+     <h3>Data updated</h3>
+      {{/if}}
     
 </form>
 </div>
+
+
+
      
-      {{/if}}      
+     {{/if}} 
 </body>
 </html>
