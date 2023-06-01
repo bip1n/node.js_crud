@@ -39,7 +39,7 @@ app.get("/addStudent", (req, res) => {
    const {name,phone,email,gender} = req.query;
 
    //sanitizing the data 
-        let qry = "SELECT * FROM crud WHERE email = ? or phone = ?";
+        let qry = "SELECT * FROM student WHERE email = ? or phone = ?";
         mysql.query(qry, [email,phone], (err, results) => {
         if (err) 
             throw err;
@@ -49,8 +49,8 @@ app.get("/addStudent", (req, res) => {
                 }
                 else{
                     //insert query to insert the data into the database
-                    let qry2 = "INSERT INTO crud VALUES (?,?,?,?)";
-                    mysql.query(qry2, [name, phone, email, gender], (err, results) => {
+                    let qry2 = "INSERT INTO student VALUES (?,?,?,?)";
+                    mysql.query(qry2, [name, email, phone, gender], (err, results) => {
                     if (results.affectedRows > 0){
                             res.render("add", { mesg: true });
                         }
@@ -65,7 +65,7 @@ app.get("/searchstudent", (req, res) => {
     //fetching the data from the form
     const {phone} = req.query;
     //select query to fetch the data from the database
-    let qry = "SELECT * FROM crud WHERE phone = ?";
+    let qry = "SELECT * FROM student WHERE phone = ?";
     mysql.query(qry, [phone], (err, results) => {
         if (err) 
             throw err;
@@ -85,7 +85,7 @@ app.get("/searchstudent", (req, res) => {
 app.get("/updatesearch", (req, res) => {
     const {phone} = req.query;
     //select query to fetch the data from the database
-    let qry = "SELECT * FROM crud WHERE phone = ?";
+    let qry = "SELECT * FROM student WHERE phone = ?";
     mysql.query(qry, [phone], (err, results) => {
         if (err) 
             throw err;
@@ -106,7 +106,7 @@ app.get("/updatestudent", (req, res) => {
     const{phone}=req.query;
     const{username}  = req.query;
     const {gender} = req.query;
-    let qry = "UPDATE crud SET name=?, gender=? WHERE phone=?";
+    let qry = "UPDATE student SET name=?, gender=? WHERE phone=?";
     mysql.query(qry, [name,gender,phone], (err, results) => {
         if (err) 
             throw err;
